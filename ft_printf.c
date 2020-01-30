@@ -17,8 +17,6 @@ int	ft_printf(char *st, ...)
 			st += ft_parsing(st, &i, args);
 			tmp = st + 1;
 		}
-		if (*(st) == '%' && *(st + 1) == '%')
-				ft_putchar_fd('%', 2);
 		st++;
 	}
 	if (tmp != st)

@@ -27,14 +27,12 @@ int ft_parsing(char *c, int *i, va_list args)
 	(void)i;
 	o = 1;
 	//(void)flags;
-	while (*(c + o) == '0' || *(c + o) == '-' || *(c + o) == '%')
+	while (*(c + o) == '0' || *(c + o) == '-')
 	{
 		if (*(c + o) == '0')
 			flags.zero = 1;
 		if (*(c + o) == '-')
 			flags.tiret = 1;
-		if (*(c + o) == '%' && *(c + o + 1) == '%' && o++)
-			flags.percent = 1;
 		o++;
 	}
 	if (flags.tiret && flags.zero)
@@ -61,13 +59,8 @@ int ft_parsing(char *c, int *i, va_list args)
 			flags.precision = ft_atoi_count(c + o + 1, &o);
 		o++;
 	}
-	if (*(c + o) == '%' && o++)
-	{
-		flags.percent = 2;
-		o++;
-	}
 	if (*(c + o) == 'c' || *(c + o) == 's' || *(c + o) == 'p' || *(c + o) == 'd'
-	|| *(c + o) == 'i' || *(c + o) == 'u' || *(c + o) == 'x' || *(c + o) == 'X')
+	|| *(c + o) == 'i' || *(c + o) == 'u' || *(c + o) == 'x' || *(c + o) == 'X' || *(c + o)  == '%')
 	{
 		flags.type = *(c + o);
 		ft_print_flag(flags);
