@@ -29,8 +29,6 @@ void	ft_display_string(char *c, t_flags *flags)
 		tmp_w = 0;
 		tmp_len = len;
 	}
-	if (flags->point == 0)
-		tmp_len = len;
 	if (flags->width >= len)
 	{
 		tmp_len = len;
