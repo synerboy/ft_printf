@@ -2,9 +2,6 @@
 
 void	ft_display_c(char c, t_flags *flags)
 {
-	(void)c;
-	(void)flags;
-
 	int tmp_w;
 
 	tmp_w = flags->width;
