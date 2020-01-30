@@ -7,6 +7,8 @@ void	ft_display_unsigned_int(unsigned int nb, t_flags *flags)
 	int tmp_w = 0;
 	int tmp_p = 0;
 
+	if (flags->width < 0)
+		flags->tiret = 1;
 	width_nb = ft_width_nb_unsigned(nb) - 1;
 	if (flags->width > width_nb && flags->precision == 0)
 	{
