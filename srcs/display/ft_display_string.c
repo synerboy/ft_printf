@@ -35,7 +35,7 @@ void	ft_display_string(char *c, t_flags *flags)
 	if (flags->width >= len)
 	{
 		tmp_len = len;
-		if (flags->precision < len)
+		if (flags->precision < len && flags->point)
 			tmp_len = flags->precision;
 		tmp_w = flags->width - tmp_len;
 	}
