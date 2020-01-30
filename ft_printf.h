@@ -30,7 +30,7 @@ int				ft_format(va_list args, char type, t_flags *flags);
 void			ft_display_int(int nb, t_flags *flags);
 void			ft_putstr_len_fd(char *s, int len, int fd);
 int				ft_atoi_count(const char *str, int *o);
-int				ft_width_nb16(__uint64_t n);
+int				ft_width_nb64(__uint64_t n);
 int				ft_width_nb(int n);
 int				ft_width_nb_unsigned(unsigned int n);
 void			ft_display_c(char c, t_flags *flags);
