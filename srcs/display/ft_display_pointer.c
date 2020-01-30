@@ -44,7 +44,7 @@ void	ft_display_pointer(t_flags *flags, char *pt)
 				ft_putchar_fd('0', 2);
 		if (flags->zero && flags->width > 0 && flags->tiret == 0)
 			while (tmp_w-- > 0)
-				ft_putchar_fd('0', 2);
+				ft_putchar_fd((flags->point == 0) ? '0' : ' ', 2);
 		ft_putpointer_fd(read, 2);
 		if (flags->tiret)
 			while (tmp_w-- > 0)
