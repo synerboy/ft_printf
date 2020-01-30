@@ -44,6 +44,7 @@ void	ft_display_pointer(t_flags *flags, char *pt)
 	}
 	else
 	{
+		flags->precision = 0;
 		ft_display_string("(nil)", flags);
 		//ft_putstr_fd("(nil)", 2);
 	}
