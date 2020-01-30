@@ -3,8 +3,6 @@
 int		ft_format(va_list args, char type, t_flags *flags)
 {
 	(void)args;
-	if (flags->percent)
-		ft_putchar_fd('%', 1);
 	if (type == 'd' || type == 'i')
 		ft_display_int(va_arg(args, int), flags);
 	if (type == 'c')

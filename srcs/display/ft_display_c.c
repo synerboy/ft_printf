@@ -13,7 +13,7 @@ void	ft_display_c(char c, t_flags *flags)
 		flags->tiret = 1;
 		tmp_w = -tmp_w;
 	}
-	if ((flags->precision == 0) && flags->percent == 1)
+	if ((flags->precision == 0))
 	{
 		if (flags->tiret == 0)
 			while (tmp_w-- > 1)
