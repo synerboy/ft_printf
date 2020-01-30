@@ -46,7 +46,6 @@ void	ft_display_pointer(t_flags *flags, char *pt)
 	{
 		flags->point = 0;
 		flags->precision = 0;
-		flags->tiret = 1;
 		ft_display_string("(nil)", flags);
 		//ft_putstr_fd("(nil)", 2);
 	}
