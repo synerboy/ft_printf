@@ -39,7 +39,7 @@ void	ft_display_pointer(t_flags *flags, char *pt)
 			while (tmp_w-- > 0)
 				ft_putchar_fd(' ', 2);
 		ft_putstr_fd("0x", 2);		
-		if (flags->zero || (flags->width > 0 && flags->tiret == 0))
+		if (flags->zero || (flags->width > 0 && flags->tiret == 0) || flags->tiret)
 			while (tmp_p-- > 0)
 				ft_putchar_fd('0', 2);
 		if (flags->zero && flags->width > 0 && flags->tiret == 0 && flags->point == 0)
