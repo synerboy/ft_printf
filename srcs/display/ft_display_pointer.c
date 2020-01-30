@@ -43,5 +43,17 @@ void	ft_display_pointer(t_flags *flags, char *pt)
 				ft_putchar_fd(' ', 2);
 	}
 	else
+	{
+		if (flags->tiret == 0)
+			while (tmp_w-- > 0)
+				ft_putchar_fd(' ', 2);
+		ft_putstr_fd("0x", 2);
+		if (flags->percent != 2)
+			while (tmp_p-- > 0)
+				ft_putchar_fd('0', 2);
 		ft_putstr_fd("(nil)", 2);
+		if (flags->tiret && flags->percent != 2)
+			while (tmp_w-- > 0)
+				ft_putchar_fd(' ', 2);
+	}
 }
