@@ -1,5 +1,5 @@
 #include "ft_printf.h"
-#define INCLUDE "%-0s", "bonjour"
+#define INCLUDE "%0s", "bonjour"
 int main(void)
 {
 	char *p;
