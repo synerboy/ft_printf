@@ -11,6 +11,11 @@ void	ft_display_pointer(t_flags *flags, char *pt)
 	tmp_p = 0;
 	read = (__uint64_t)pt;
 	width = ft_width_nb_64(read);
+	if (flags->width < 0)
+	{
+		flags->tiret = 1;
+		flags->width = -flags->width;
+	}
 	if (read)
 	{
 		if (flags->width <= flags->precision 

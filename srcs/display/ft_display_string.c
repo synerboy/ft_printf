@@ -11,6 +11,11 @@ void	ft_display_string(char *c, t_flags *flags)
 	len = ft_strlen(c);
 	tmp_len = len;
 	tmp_w = flags->width;
+	if (flags->width < 0)
+	{
+		flags->tiret = 1;
+		flags->width = -flags->width;
+	}
 	if (flags->precision < len && flags->point)
 	{
 		tmp_len = flags->precision;
