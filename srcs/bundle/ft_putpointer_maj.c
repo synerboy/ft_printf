@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned_itoa.c                                 :+:      :+:    :+:   */
+/*   ft_putpointer_maj.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/31 12:10:40 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/01/31 12:17:14 by vabrageo         ###   ########.fr       */
+/*   Created: 2020/01/31 12:10:34 by vabrageo          #+#    #+#             */
+/*   Updated: 2020/01/31 15:07:18 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-char		*ft_unsigned_itoa(unsigned int n)
+void	ft_putpointermaj_fd(__uint128_t n, int fd)
 {
-	char			*new;
-	char			*tmp;
-	unsigned int	ctnum;
-
-	ctnum = ft_width_nb_unsigned(n);
-	if (!(new = (char *)ft_calloc(ctnum, sizeof(char))))
-		return (NULL);
-	tmp = new + (ctnum - 2);
-	if (!n)
-		*new = '0';
-	while (n)
+	if (n <= 9)
+		ft_putchar_fd((n + '0'), fd);
+	else if (n >= 10 && n <= 16)
 	{
-		*tmp = (n % 10) + '0';
-		n /= 10;
-		tmp--;
+		ft_putchar_fd(('A' - 10) + n, fd);
 	}
-	if (tmp == new && *new != '0')
-		*tmp = '-';
-	return (new);
+	else if (n > 16)
+	{
+		ft_putpointermaj_fd(n / 16, fd);
+		ft_putpointermaj_fd(n % 16, fd);
+	}
 }

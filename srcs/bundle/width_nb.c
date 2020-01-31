@@ -1,8 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   width_nb.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/31 12:10:46 by vabrageo          #+#    #+#             */
+/*   Updated: 2020/01/31 15:16:55 by vabrageo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../ft_printf.h"
 
-int	ft_width_nb_64(__uint64_t n)
+int	ft_width_nb_64(__uint128_t n)
 {
-	__uint64_t ct;
+	__uint128_t ct;
+
+	ct = 0;
+	if (n == 0)
+		return (2);
+	while (n != 0)
+	{
+		n /= 16;
+		ct++;
+	}
+	return (ct);
+}
+
+int	ft_width_nb_long(unsigned long n)
+{
+	int ct;
 
 	ct = 0;
 	if (n == 0)

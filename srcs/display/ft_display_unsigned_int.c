@@ -1,45 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_display_unsigned_int.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/31 12:11:11 by vabrageo          #+#    #+#             */
+/*   Updated: 2020/01/31 16:08:52 by vabrageo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../ft_printf.h"
+
+void	ft_display_unsigned_int_cfg(t_flags *f, int *width_nb, int *p, int *w)
+{
+	if (f->width < 0)
+	{
+		f->tiret = 1;
+		f->width = -f->width;
+	}
+	if (f->width > *width_nb && f->precision == 0)
+	{
+		if (f->zero)
+			*p = f->width - *width_nb;
+		if (f->zero == 0)
+			*w = f->width - *width_nb;
+	}
+	if (f->width <= f->precision && f->precision >= *width_nb && !(f->width))
+	{
+		*w = 0;
+		*p = f->precision - *width_nb;
+	}
+	if (f->width >= f->precision && f->precision >= *width_nb)
+	{
+		*w = f->width - (f->precision);
+		*p = f->precision - *width_nb;
+	}
+	if (f->width >= f->precision && f->precision <= *width_nb)
+		if (f->zero == 0)
+			*w = f->width - *width_nb;
+}
 
 void	ft_display_unsigned_int(unsigned int nb, t_flags *flags)
 {
-	(void)flags;
 	int width_nb;
-	int tmp_w = 0;
-	int tmp_p = 0;
+	int tmp_w;
+	int tmp_p;
 
-	if (flags->width < 0)
-	{
-		flags->tiret = 1;
-		flags->width = -flags->width;
-	}
-	width_nb = ft_width_nb_unsigned(nb) - 1;
-	if (flags->width > width_nb && flags->precision == 0)
-	{
-		if (flags->zero)
-			tmp_p = flags->width - width_nb;
-		if (flags->zero == 0)
-			tmp_w = flags->width - width_nb;
-	}
-	if (flags->width <= flags->precision 
-	&& flags->precision >= width_nb)
-	{
-		tmp_w = flags->width = 0;
-		tmp_p = flags->precision - width_nb;
-	}
-	if (flags->width >= flags->precision &&
-	flags->precision >= width_nb)
-	{
-		tmp_w = flags->width - (flags->precision);
-		tmp_p = flags->precision - width_nb;
-	}
-	if (flags->width >= flags->precision &&
-	flags->precision <= width_nb)
-	{
-		if (flags->zero == 0)
-			tmp_w = flags->width - width_nb;
-	}
-	if (flags->precision >= flags->width 
-	&& width_nb > flags->width)
+	tmp_w = 0;
+	tmp_p = 0;
+	flags->unsignedint_tmp = nb;
+	width_nb = ft_width_nb_unsigned(flags->unsignedint_tmp) - 1;
+	ft_display_unsigned_int_cfg(flags, &width_nb, &tmp_p, &tmp_w);
+	if (flags->precision >= flags->width && width_nb > flags->width)
 		tmp_p = flags->precision - width_nb;
 	if (flags->tiret == 0)
 		while (tmp_w-- > 0)

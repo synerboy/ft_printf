@@ -6,13 +6,13 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 21:25:03 by vabrageo          #+#    #+#             */
-/*   Updated: 2019/10/20 20:29:53 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/01/31 18:49:19 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_ctnum(int n)
+static int		ft_ctnum(long long n, int base)
 {
 	int ct;
 
@@ -21,19 +21,27 @@ static int	ft_ctnum(int n)
 		return (2);
 	while (n != 0)
 	{
-		n /= 10;
+		n /= base;
 		ct++;
 	}
 	return (ct + 1);
 }
 
-char		*ft_itoa(int n)
+char			*ft_itoa(long long n)
 {
-	char	*new;
-	char	*tmp;
-	int		ctnum;
+	return (ft_itoa_base(n, 10));
+}
 
-	ctnum = (n < 0) ? ft_ctnum(n) + 1 : ft_ctnum(n);
+char			*ft_itoa_base(long long n, size_t base)
+{
+	static char *base_str = "0123456789abcdef";
+	char		*new;
+	char		*tmp;
+	int			ctnum;
+
+	if (base > 16)
+		return (NULL);
+	ctnum = (n < 0) ? ft_ctnum(n, base) + 1 : ft_ctnum(n, base);
 	if (!(new = (char *)ft_calloc(ctnum, sizeof(char))))
 		return (NULL);
 	tmp = new + (ctnum - 2);
@@ -41,8 +49,8 @@ char		*ft_itoa(int n)
 		*new = '0';
 	while (n)
 	{
-		*tmp = ((n < 0) ? -(n % 10) : (n % 10)) + '0';
-		n /= 10;
+		*tmp = base_str[((n < 0) ? -(n % base) : (n % base))];
+		n /= base;
 		tmp--;
 	}
 	if (tmp == new && *new != '0')

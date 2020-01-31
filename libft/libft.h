@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 18:15:45 by vabrageo          #+#    #+#             */
-/*   Updated: 2019/10/19 15:31:08 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/01/31 15:37:50 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s1, char const *set);
 int				ft_ischar(char c, char const *charset);
 char			**ft_split(char const *s, char c);
-char			*ft_itoa(int n);
+char			*ft_itoa(long long n);
+char			*ft_itoa_base(long long n, size_t base);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
