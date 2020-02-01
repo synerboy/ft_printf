@@ -23,10 +23,10 @@ void	ft_config_hexmaj(t_flags flags, int *tmp_p, int *tmp_w, int width)
 	}
 	if ((flags.width && flags.precision == 0) ||
 	(flags.width >= flags.precision))
-		*tmp_w = flags.width - width - 2;
+		*tmp_w = flags.width - width;
 	if (flags.width > flags.precision && flags.width > width
 	&& flags.precision > width)
-		*tmp_w = flags.width - flags.precision - 2;
+		*tmp_w = flags.width - flags.precision;
 }
 
 void	ft_show_result_hexmaj(t_flags f, int tmp_w, int tmp_p, __uint128_t r)

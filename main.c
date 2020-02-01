@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define INCLUDE "bonjour %14.56d les amis", 45
+#define INCLUDE "bonjour %60x les amis", 584
 int main(void)
 {
 
