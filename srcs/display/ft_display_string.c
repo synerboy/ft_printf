@@ -68,7 +68,10 @@ void	ft_display_string(char *c, t_flags *flags)
 	if (flags->tiret == 0)
 		while (tmp_w-- > 0)
 			ft_putchar_fd(' ', 1);
-	ft_putstr_len_fd(c, tmp_len, 1);
+	if (c == NULL)
+		ft_putstr_fd("(null)", 1);
+	else
+		ft_putstr_len_fd(c, tmp_len, 1);
 	if (flags->tiret)
 		while (tmp_w-- > 0)
 			ft_putchar_fd(' ', 1);

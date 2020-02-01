@@ -59,4 +59,5 @@ void				ft_putpointermaj_fd(__uint128_t n, int fd);
 void				ft_display_string(char *c, t_flags *flags);
 void				ft_display_hexamaj(t_flags *flags, char *hex);
 void				ft_display_hexa(t_flags *flags, char *hex);
+void				ft_display_percent(t_flags *flags);
 #endif
