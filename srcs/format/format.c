@@ -16,7 +16,7 @@ int		ft_format(va_list args, char type, t_flags *flags)
 {
 	(void)args;
 	if (type == '%')
-		ft_putchar_fd('%', 2);
+		ft_putchar_fd('%', 1);
 	if (type == 'd' || type == 'i')
 		ft_display_int(va_arg(args, int), flags);
 	if (type == 'c')

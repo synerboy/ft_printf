@@ -67,9 +67,9 @@ void	ft_display_string(char *c, t_flags *flags)
 	ft_display_string_cfg2(flags, len, &tmp_len, &tmp_w);
 	if (flags->tiret == 0)
 		while (tmp_w-- > 0)
-			ft_putchar_fd(' ', 2);
-	ft_putstr_len_fd(c, tmp_len, 2);
+			ft_putchar_fd(' ', 1);
+	ft_putstr_len_fd(c, tmp_len, 1);
 	if (flags->tiret)
 		while (tmp_w-- > 0)
-			ft_putchar_fd(' ', 2);
+			ft_putchar_fd(' ', 1);
 }

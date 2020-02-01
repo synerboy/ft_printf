@@ -56,11 +56,11 @@ void	ft_display_unsigned_int(unsigned int nb, t_flags *flags)
 		tmp_p = flags->precision - width_nb;
 	if (flags->tiret == 0)
 		while (tmp_w-- > 0)
-			ft_putchar_fd(' ', 2);
+			ft_putchar_fd(' ', 1);
 	while (tmp_p-- > 0)
 		ft_putchar_fd('0', 2);
-	ft_putstr_fd(ft_unsigned_itoa(nb), 2);
+	ft_putstr_fd(ft_unsigned_itoa(nb), 1);
 	if (flags->tiret)
 		while (tmp_w-- > 0)
-			ft_putchar_fd(' ', 2);
+			ft_putchar_fd(' ', 1);
 }

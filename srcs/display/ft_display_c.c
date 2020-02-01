@@ -24,9 +24,9 @@ void	ft_display_c(char c, t_flags *flags)
 	}
 	if (flags->tiret == 0)
 		while (tmp_w-- > 1)
-			ft_putchar_fd(' ', 2);
-	ft_putchar_fd(c, 2);
+			ft_putchar_fd(' ', 1);
+	ft_putchar_fd(c, 1);
 	if (flags->tiret)
 		while (tmp_w-- > 1)
-			ft_putchar_fd(' ', 2);
+			ft_putchar_fd(' ', 1);
 }

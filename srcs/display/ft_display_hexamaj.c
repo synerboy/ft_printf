@@ -33,25 +33,25 @@ void	ft_show_result_hexmaj(t_flags f, int tmp_w, int tmp_p, __uint128_t r)
 {
 	if (f.tiret == 0 && (f.zero == 0 || f.point))
 		while (tmp_w-- > 0)
-			ft_putchar_fd(' ', 2);
+			ft_putchar_fd(' ', 1);
 	if (f.zero || (f.width > 0 && f.tiret == 0) || f.tiret)
 		while (tmp_p-- > 0)
-			ft_putchar_fd('0', 2);
+			ft_putchar_fd('0', 1);
 	if (f.zero && f.width > 0 && f.tiret == 0 && f.point == 0)
 		while (tmp_w-- > 0)
-			ft_putchar_fd('0', 2);
+			ft_putchar_fd('0', 1);
 	ft_putpointermaj_fd(r, 2);
 	if (f.tiret)
 		while (tmp_w-- > 0)
-			ft_putchar_fd(' ', 2);
+			ft_putchar_fd(' ', 1);
 }
 
 void	ft_display_hexamaj(t_flags *flags, char *hex)
 {
 	unsigned long	read;
-	int			width;
-	int			tmp_w;
-	int			tmp_p;
+	int				width;
+	int				tmp_w;
+	int				tmp_p;
 
 	tmp_w = 0;
 	tmp_p = 0;
