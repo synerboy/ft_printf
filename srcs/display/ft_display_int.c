@@ -64,14 +64,20 @@ void	ft_display_int_config2(t_flags f, int *width_nb, int *tmp_w, int *tmp_p)
 void	ft_display_int_show(t_flags f, int *tmp_w, int *tmp_p)
 {
 	if (f.tiret == 0)
-		while (*tmp_w-- > 0)
-			ft_putchar_fd(' ', 2);
+		while (*tmp_w > 0)
+		{
+			ft_putchar_fd(' ', 1);
+			*tmp_w = *tmp_w - 1;
+		}
 	if (f.tmp2)
-		ft_putchar_fd('-', 2);
+		ft_putchar_fd('-', 1);
 	if (f.tmp2)
 		*tmp_p = *tmp_p + 1;
-	while (*tmp_p-- > 0)
-		ft_putchar_fd('0', 2);
+	while (*tmp_p > 0)
+	{
+		ft_putchar_fd('0', 1);
+		*tmp_p = *tmp_p - 1;
+	}
 }
 
 void	ft_display_int(int nb, t_flags *flags)

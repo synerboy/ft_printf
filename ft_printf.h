@@ -38,7 +38,7 @@ typedef struct		s_flags
 
 }					t_flags;
 
-int					ft_printf(char *st, ...);
+int					ft_printf(const char *st, ...);
 void				ft_print_flag(t_flags flags);
 int					ft_parsing(char *c, int *i, va_list args);
 int					ft_format(va_list args, char type, t_flags *flags);

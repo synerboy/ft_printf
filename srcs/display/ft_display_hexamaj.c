@@ -48,14 +48,14 @@ void	ft_show_result_hexmaj(t_flags f, int tmp_w, int tmp_p, __uint128_t r)
 
 void	ft_display_hexamaj(t_flags *flags, char *hex)
 {
-	__uint128_t	read;
+	unsigned long	read;
 	int			width;
 	int			tmp_w;
 	int			tmp_p;
 
 	tmp_w = 0;
 	tmp_p = 0;
-	read = (__uint128_t)hex;
+	read = (unsigned long)hex;
 	width = ft_width_nb_64(read);
 	if (flags->width < 0)
 	{

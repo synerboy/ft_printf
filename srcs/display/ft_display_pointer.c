@@ -32,7 +32,7 @@ void	ft_config_pointer(t_flags flags, int *tmp_p, int *tmp_w, int width)
 void	ft_show_result_pointer(t_flags f, int p, int w, unsigned long *h)
 {
 	if (f.tiret == 0 && (f.zero == 0 || f.point))
-		while (w-- > 0)
+		while (w > 0)
 			ft_putchar_fd(' ', 1);
 	ft_putstr_fd("0x", 2);
 	if (f.zero || (f.width > 0 && f.tiret == 0) || f.tiret)

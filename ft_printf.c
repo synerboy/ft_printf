@@ -12,20 +12,23 @@
 
 #include "ft_printf.h"
 
-int			ft_printf(char *st, ...)
+int			ft_printf(const char *str, ...)
 {
 	va_list	args;
 	char	*tmp;
+	char 	*st;
 	int		i;
 
 	i = 0;
+	st = ft_strdup(str);
+	ft_strlcpy(st, str, ft_strlen(str) + 1);
 	tmp = st;
-	va_start(args, st);
+	va_start(args, str);
 	while (*st)
 	{
 		if (*st == '%')
 		{
-			ft_putstr_len_fd(tmp, st - tmp, 2);
+			ft_putstr_len_fd(tmp, st - tmp, 1);
 			i += (st - tmp);
 			st += ft_parsing(st, &i, args);
 			tmp = st + 1;
@@ -34,7 +37,7 @@ int			ft_printf(char *st, ...)
 	}
 	if (tmp != st)
 	{
-		ft_putstr_len_fd(tmp, st - tmp, 2);
+		ft_putstr_len_fd(tmp, st - tmp, 1);
 		i += (st - tmp);
 	}
 	va_end(args);

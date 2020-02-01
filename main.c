@@ -11,12 +11,10 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define INCLUDE "bonjour"
+#define INCLUDE "bonjour %14.56d les amis", 45
 int main(void)
 {
-	char *p;
 
-	p = "bonjourlesamis";
 	ft_printf(INCLUDE);
 	printf("|END\n");
 	printf(INCLUDE);
