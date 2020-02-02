@@ -60,10 +60,11 @@ all: $(NAME)
 $(NAME): ${OBJS}
 	${AR} ${NAME} ${OBJS}
 test: all
-	$(CC) $(CFLAGS) main.c libftprintf.a -o X
+	$(CC) $(CFLAGS) main.c $(NAME) -o X
 	./X
 clean:
 	rm -rf $(OBJS)
+	rm $(NAME)
 fclean: clean
 	rm -rf $(NAME)
 re: fclean all
