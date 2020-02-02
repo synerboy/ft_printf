@@ -52,7 +52,6 @@ SRCS = 	libft/ft_bzero.c \
 		srcs/display/ft_display_string.c \
 		srcs/display/ft_display_hexa.c \
 		srcs/bundle/ft_putpointer_maj.c \
-		srcs/display/ft_display_percent.c \
 		srcs/display/ft_display_hexamaj.c
 OBJS  = ${SRCS:.c=.o}
 AR = ar rc

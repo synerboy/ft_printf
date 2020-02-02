@@ -18,9 +18,11 @@ int			ft_printf(const char *str, ...)
 	char	*tmp;
 	char 	*st;
 	int		i;
+	char	*tmpst;
 
 	i = 0;
 	st = ft_strdup(str);
+	tmpst = st;
 	ft_strlcpy(st, str, ft_strlen(str) + 1);
 	tmp = st;
 	va_start(args, str);
@@ -40,6 +42,7 @@ int			ft_printf(const char *str, ...)
 		ft_putstr_len_fd(tmp, st - tmp, 1);
 		i += (st - tmp);
 	}
+	free(tmpst);
 	va_end(args);
 	return (i);
 }
