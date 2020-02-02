@@ -31,6 +31,7 @@ void	ft_config_pointer(t_flags flags, int *tmp_p, int *tmp_w, int width)
 
 void	ft_show_result_pointer(t_flags f, int p, int w, unsigned long *h)
 {
+	char *forfree;
 	if (f.tiret == 0 && (f.zero == 0 || f.point))
 		while (w-- > 0)
 			ft_putchar_fd(' ', 1);
@@ -41,7 +42,9 @@ void	ft_show_result_pointer(t_flags f, int p, int w, unsigned long *h)
 	if (f.zero && f.width > 0 && f.tiret == 0 && f.point == 0)
 		while (w-- > 0)
 			ft_putchar_fd('0', 1);
-	ft_putstr_fd(ft_itoa_base((long long)(*h), 16), 1);
+	forfree = ft_itoa_base((long long)(*h), 16);
+	ft_putstr_fd(forfree, 1);
+	free(forfree);
 	if (f.tiret)
 		while (w-- > 0)
 			ft_putchar_fd(' ', 1);
