@@ -57,16 +57,22 @@ OBJS  = ${SRCS:.c=.o}
 AR = ar rc
 all: $(NAME)
 	echo $(SRCS)
+
 $(NAME): ${OBJS}
 	${AR} ${NAME} ${OBJS}
+
 test: all
 	$(CC) $(CFLAGS) main.c $(NAME) -o X
 	./X
+	rm X
+
 clean:
 	rm -rf $(OBJS)
 	rm $(NAME)
+
 fclean: clean
 	rm -rf $(NAME)
+
 re: fclean all
 
 .PHONY: all clean fclean re

@@ -6,13 +6,13 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:38 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/01/31 19:09:08 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/02 16:13:50 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #define MEME 178765
-#define INCLUDE "TESTING %10%%-06.10%%d OH OUI MY %-10p, OR, %p NUM:%010.6d " , 3141592, p, NULL, 67
+#define INCLUDE "%p", NULL
 #define INCLUDE2 "bonjour %-10%%-0.10%%d OH OUI MY %x, OR, %-10.4s", -189, MEME, "Nonono je ne veut pas oublier"
 #define INCLUDE3 "bonjour %-10.40%%-0.10%%s OH OUI MY %x, OR, %19X", "bonjourles pupute", MEME, MEME
 #define INCLUDE4 "bonjour %-10.40%%-0.10%%s OH OUI MY %-19.%%8d, OR, %19X", "bonwte98", MEME, MEME
@@ -20,7 +20,7 @@
 int main(void)
 {
 	ft_printf("======================= PRINTF TESTING =======================\n");
-	char *p = "Bonjour les pupute";
+	//char *p = "Bonjour les pupute";
 	ft_printf(INCLUDE);
 	printf("|END\n");
 	printf(INCLUDE);
