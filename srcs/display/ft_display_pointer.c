@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:03 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/02 16:12:18 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/02 16:33:48 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	ft_show_result_pointer(t_flags f, int p, int w, unsigned long *h)
 
 void	ft_show_result_null(t_flags *flags)
 {
-	printf("f");
 	flags->point = 0;
 	flags->precision = 0;
 	ft_display_string("0x0", flags);
