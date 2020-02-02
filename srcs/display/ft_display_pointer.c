@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:03 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/01/31 15:48:34 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/02 15:02:40 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ void	ft_config_pointer(t_flags flags, int *tmp_p, int *tmp_w, int width)
 		*tmp_w = flags.width - width - 2;
 	if (flags.width > flags.precision && flags.width > width
 	&& flags.precision > width)
-		*tmp_w = flags.width - flags.precision ;
+		*tmp_w = flags.width - flags.precision;
 }
 
 void	ft_show_result_pointer(t_flags f, int p, int w, unsigned long *h)
 {
 	char *forfree;
+
 	if (f.tiret == 0 && (f.zero == 0 || f.point))
 		while (w-- > 0)
 			ft_putchar_fd(' ', 1);

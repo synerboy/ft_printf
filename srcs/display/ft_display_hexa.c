@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:10:55 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/01/31 15:58:08 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/02 15:03:04 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	ft_show_result_hex(t_flags *f, int tmp_w, int tmp_p, __uint128_t read)
 void	ft_display_hexa(t_flags *flags, char *hex)
 {
 	unsigned long	read;
-	int			width;
-	int			tmp_w;
-	int			tmp_p;
+	int				width;
+	int				tmp_w;
+	int				tmp_p;
 
 	tmp_w = 0;
 	tmp_p = 0;

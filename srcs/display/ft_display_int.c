@@ -6,13 +6,13 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:01 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/01/31 14:34:09 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/02 15:01:25 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-void	ft_display_int_config1(t_flags *f, int *width_nb, int *tmp_w, int *tmp_p)
+void	ft_display_int_config1(t_flags *f, int *width_nb, int *w, int *p)
 {
 	if (f->tmp < 0)
 		f->tmp2 = 1;
@@ -22,42 +22,42 @@ void	ft_display_int_config1(t_flags *f, int *width_nb, int *tmp_w, int *tmp_p)
 	if (f->width > *width_nb && f->precision == 0)
 	{
 		if (f->zero)
-			*tmp_p = f->width - *width_nb;
+			*p = f->width - *width_nb;
 		if (f->zero == 0)
-			*tmp_w = f->width - *width_nb;
+			*w = f->width - *width_nb;
 	}
 	if (f->width <= f->precision && f->precision >= *width_nb)
 	{
-		*tmp_w = 0;
+		*w = 0;
 		f->width = 0;
-		*tmp_p = f->precision - *width_nb;
+		*p = f->precision - *width_nb;
 	}
 	if (f->width >= f->precision && f->precision >= *width_nb)
 	{
-		*tmp_w = f->width - (f->precision);
-		*tmp_p = f->precision - *width_nb;
+		*w = f->width - (f->precision);
+		*p = f->precision - *width_nb;
 	}
 }
 
-void	ft_display_int_config2(t_flags *f, int *width_nb, int *tmp_w, int *tmp_p)
+void	ft_display_int_config2(t_flags *f, int *width_nb, int *w, int *p)
 {
 	if (f->width >= f->precision && f->precision <= *width_nb)
 		if (f->zero == 0)
-			*tmp_w = f->width - *width_nb;
+			*w = f->width - *width_nb;
 	if (f->precision >= f->width && *width_nb > f->width)
-		*tmp_p = f->precision - *width_nb;
+		*p = f->precision - *width_nb;
 	if (f->tmp2)
-		*tmp_w = *tmp_w - 1;
+		*w = *w - 1;
 	if (f->tmp2 && f->width > f->precision && f->precision <= *width_nb)
 	{
-		*tmp_p = *tmp_p - 1;
-		*tmp_w = *tmp_w + 1;
+		*p = *p - 1;
+		*w = *w + 1;
 	}
 	if (f->precision > 0 && f->tmp == 0)
 	{
-		*tmp_p = f->precision - 1;
+		*p = f->precision - 1;
 		if (f->width > 0)
-			*tmp_w = *tmp_w + 1;
+			*w = *w + 1;
 	}
 }
 
