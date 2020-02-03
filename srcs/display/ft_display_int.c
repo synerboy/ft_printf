@@ -19,9 +19,10 @@ int		ft_display_int(int nb, t_flags *f)
 	int	i;
 	int	neg;
 	int	zero;
-	int total;
+	int	total;
 
-	total = (f->width > (((f->point && f->precision < ft_width_nb(nb)))) ? f->width : ((f->point && f->precision < ft_width_nb(nb))));
+	total = (f->width > (((f->point && f->precision < ft_width_nb(nb)))) ?
+	f->width : ((f->point && f->precision < ft_width_nb(nb))));
 	neg = (nb < 0) ? 1 : 0;
 	nb = (neg) ? -nb : nb;
 	zero = 0;
@@ -34,8 +35,9 @@ int		ft_display_int(int nb, t_flags *f)
 	&& (f->precision >= 0)) ? f->precision : ft_width_nb(nb);
 	st_total_len = (f->width > st_len) ? f->width : st_len;
 	i = 0;
-	while (f->tiret == 0 && ++i < (st_total_len - st_len + ((nb == 0) ? 1 : 0) + ((neg > 0) ? 0 : 1)) 
-	- zero - ((f->precision < ft_width_nb(nb) && f->precision > 0) ? (ft_width_nb(nb) - f->precision) : 0))
+	while (f->tiret == 0 && ++i < (st_total_len - st_len + ((nb == 0) ? 1 : 0) 
+	+ ((neg > 0) ? 0 : 1)) - zero - ((f->precision < ft_width_nb(nb) 
+	&& f->precision > 0) ? (ft_width_nb(nb) - f->precision) : 0))
 		ft_putchar_fd((f->precision >= f->width && f->precision > 0) ? '0' : ' ', 1);
 	if (neg)
 		ft_putchar_fd('-', 1);
