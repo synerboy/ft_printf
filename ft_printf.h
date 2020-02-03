@@ -42,7 +42,7 @@ int					ft_printf(const char *st, ...);
 void				ft_print_flag(t_flags flags);
 int					ft_parsing(char *c, int *i, va_list args);
 int					ft_format(va_list args, char type, t_flags *flags);
-void				ft_display_int(int nb, t_flags *flags);
+int					ft_display_int(int nb, t_flags *flags);
 void				ft_putstr_len_fd(char *s, int len, int fd);
 int					ft_atoi_count(const char *str, int *o);
 int					ft_width_nb_64(__uint128_t n);

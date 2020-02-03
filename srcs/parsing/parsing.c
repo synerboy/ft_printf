@@ -76,7 +76,7 @@ int			ft_parsing(char *c, int *i, va_list args)
 	|| *(c + o) == 'X' || *(c + o) == '%')
 	{
 		flags.type = *(c + o);
-		ft_format(args, flags.type, &flags);
+		*i += ft_format(args, flags.type, &flags);
 		return (o);
 	}
 	return (0);

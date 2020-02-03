@@ -25,7 +25,7 @@ int			ft_format(va_list args, char type, t_flags *flags)
 	if (type == '%')
 		ft_display_c('%', flags);
 	if (type == 'd' || type == 'i')
-		ft_display_int(va_arg(args, int), flags);
+		return (ft_display_int(va_arg(args, int), flags));
 	if (type == 'c')
 		ft_display_c(va_arg(args, int), flags);
 	if (type == 'u')
@@ -35,7 +35,7 @@ int			ft_format(va_list args, char type, t_flags *flags)
 	if (type == 's')
 	{
 		stmp = va_arg(args, char *);
-		ft_display_string((stmp == NULL) ? "(null)" : stmp, flags);
+		return (ft_display_string((stmp == NULL) ? "(null)" : stmp, flags));
 	}
 	if (type == 'x')
 		ft_display_hexa(flags, va_arg(args, char *));
