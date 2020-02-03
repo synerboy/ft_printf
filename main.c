@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 #define MEME 178765
-#define INCLUDE "%*.*d", 0, 50, -486
+#define INCLUDE "%*.*d", 30, 10, -13
 int main(void)
 {
 	ft_printf("======================= PRINTF TESTING =======================\n");
