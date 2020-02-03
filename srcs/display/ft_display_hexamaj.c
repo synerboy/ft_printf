@@ -31,7 +31,7 @@ void	ft_config_hexmaj(t_flags flags, int *tmp_p, int *tmp_w, int width)
 
 void	ft_show_result_hexmaj(t_flags f, int tmp_w, int tmp_p, __uint128_t r)
 {
-	if (f.tiret == 0 && (f.zero == 0 || f.point))
+	if (f.tiret == 0 && (f.zero == 0 || f.point) && f.width > 0)
 		while (tmp_w-- > 0)
 			ft_putchar_fd(' ', 1);
 	if (f.zero || (f.width > 0 && f.tiret == 0) || f.tiret)
@@ -62,7 +62,7 @@ void	ft_display_hexamaj(t_flags *flags, char *hex)
 		flags->tiret = 1;
 		flags->width = -flags->width;
 	}
-	if (read)
+	if (read || read == 0)
 	{
 		ft_config_hexmaj(*flags, &tmp_p, &tmp_w, width);
 		ft_show_result_hexmaj(*flags, tmp_w, tmp_p, read);

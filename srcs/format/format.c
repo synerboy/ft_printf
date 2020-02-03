@@ -6,15 +6,22 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:14 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/02 16:14:05 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/01/31 16:09:38 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-int		ft_format(va_list args, char type, t_flags *flags)
+int			ft_format(va_list args, char type, t_flags *flags)
 {
+	char	*stmp;
+
 	(void)args;
+	if (flags->width < 0)
+	{
+		flags->tiret = 1;
+		flags->width = -flags->width;
+	}
 	if (type == '%')
 		ft_display_c('%', flags);
 	if (type == 'd' || type == 'i')
@@ -26,7 +33,10 @@ int		ft_format(va_list args, char type, t_flags *flags)
 	if (type == 'p')
 		ft_display_pointer(flags, va_arg(args, char *));
 	if (type == 's')
-		ft_display_string(va_arg(args, char *), flags);
+	{
+		stmp = va_arg(args, char *);
+		ft_display_string((stmp == NULL) ? "(null)" : stmp, flags);
+	}
 	if (type == 'x')
 		ft_display_hexa(flags, va_arg(args, char *));
 	if (type == 'X')

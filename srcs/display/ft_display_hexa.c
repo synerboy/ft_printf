@@ -31,8 +31,8 @@ void	ft_config_hex(t_flags *flags, int *tmp_p, int *tmp_w, int *width)
 
 void	ft_show_result_hex(t_flags *f, int tmp_w, int tmp_p, __uint128_t read)
 {
-	if (f->tiret == 0 && (f->zero == 0 || f->point))
-		while (tmp_w-- > 0)
+	if (f->tiret == 0 && (f->zero == 0 || f->point) && f->width > 0)
+		while (tmp_w-- >= 0)
 			ft_putchar_fd(' ', 1);
 	if (f->zero || (f->width > 0 && f->tiret == 0) || f->tiret)
 		while (tmp_p-- > 0)
@@ -41,6 +41,8 @@ void	ft_show_result_hex(t_flags *f, int tmp_w, int tmp_p, __uint128_t read)
 		while (tmp_w-- > 0)
 			ft_putchar_fd('0', 1);
 	ft_putpointer_fd(read, 2);
+	if (read == 0)
+		ft_putchar_fd('0', 1);
 	if (f->tiret)
 		while (tmp_w-- > 0)
 			ft_putchar_fd(' ', 1);
@@ -62,7 +64,7 @@ void	ft_display_hexa(t_flags *flags, char *hex)
 		flags->tiret = 1;
 		flags->width = -flags->width;
 	}
-	if (read)
+	if (read || read == 0)
 	{
 		ft_config_hex(flags, &tmp_p, &tmp_w, &width);
 		ft_show_result_hex(flags, tmp_w, tmp_p, read);

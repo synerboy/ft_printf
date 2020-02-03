@@ -12,11 +12,8 @@
 
 #include "ft_printf.h"
 #define MEME 178765
-#define INCLUDE "%p", NULL
-#define INCLUDE2 "bonjour %-10%%-0.10%%d OH OUI MY %x, OR, %-10.4s", -189, MEME, "Nonono je ne veut pas oublier"
-#define INCLUDE3 "bonjour %-10.40%%-0.10%%s OH OUI MY %x, OR, %19X", "bonjourles pupute", MEME, MEME
-#define INCLUDE4 "bonjour %-10.40%%-0.10%%s OH OUI MY %-19.%%8d, OR, %19X", "bonwte98", MEME, MEME
-#define INCLUDE5 "Bonjour l%-12.544ses connard%-7c, je suis heur%-17.45d, de f%iiair cec%x", "hohoh ui ji l", 'y', 16543, 78, 89
+#define INCLUDE "%*.*s", -10, -2, NULL
+#define INCLUDE2 "N2P%%cmDY%%%0*.0d%-c%*.3XqLZV7C73i9PB", 10, -1087841296, '5', 2, 2147483647
 int main(void)
 {
 	ft_printf("======================= PRINTF TESTING =======================\n");
@@ -29,20 +26,5 @@ int main(void)
 	ft_printf(INCLUDE2);
 	printf("|END\n");
 	printf(INCLUDE2);
-	printf("|END\n");
-
-	ft_printf(INCLUDE3);
-	printf("|END\n");
-	printf(INCLUDE3);
-	printf("|END\n");
-
-	ft_printf(INCLUDE4);
-	printf("|END\n");
-	printf(INCLUDE4);
-	printf("|END\n");
-
-	ft_printf(INCLUDE5);
-	printf("|END\n");
-	printf(INCLUDE5);
 	printf("|END\n");
 }

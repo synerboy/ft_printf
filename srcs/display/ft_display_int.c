@@ -16,8 +16,6 @@ void	ft_display_int_config1(t_flags *f, int *width_nb, int *w, int *p)
 {
 	if (f->tmp < 0)
 		f->tmp2 = 1;
-	if (f->tmp == 0)
-		f->precision += 1;
 	*width_nb = ft_width_nb(f->tmp);
 	if (f->width > *width_nb && f->precision == 0)
 	{
@@ -59,6 +57,20 @@ void	ft_display_int_config2(t_flags *f, int *width_nb, int *w, int *p)
 		if (f->width > 0)
 			*w = *w + 1;
 	}
+	if (f->tmp == 0)
+		*p = 1;
+	if (f->tmp == 0 && f->width <= 0 && f->precision)
+		*p = f->precision - 1;
+}
+
+void	ft_display_int_config3(t_flags *f, int *width_nb, int *w, int *p)
+{
+	(void)width_nb;
+	if (f->tmp == 0 && f->width > 0 && f->precision <= 0)
+	{
+		*w = f->width;
+		*p = 0;
+	}
 }
 
 void	ft_display_int_show(t_flags f, int *tmp_w, int *tmp_p)
@@ -69,11 +81,20 @@ void	ft_display_int_show(t_flags f, int *tmp_w, int *tmp_p)
 			ft_putchar_fd(' ', 1);
 			*tmp_w = *tmp_w - 1;
 		}
+	if (f.zero == 1)
+	{
+		*tmp_p = f.precision;
+		while (*tmp_p > 0 && f.width)
+		{
+			ft_putchar_fd(' ', 1);
+			*tmp_p = *tmp_p - 1;
+		}
+	}
 	if (f.tmp2)
 		ft_putchar_fd('-', 1);
 	if (f.tmp2)
 		*tmp_p = *tmp_p + 1;
-	while (*tmp_p > 0)
+	while (*tmp_p > 0 )
 	{
 		ft_putchar_fd('0', 1);
 		*tmp_p = *tmp_p - 1;
@@ -92,6 +113,7 @@ void	ft_display_int(int nb, t_flags *flags)
 	flags->tmp = nb;
 	ft_display_int_config1(flags, &width_nb, &tmp_w, &tmp_p);
 	ft_display_int_config2(flags, &width_nb, &tmp_w, &tmp_p);
+	ft_display_int_config3(flags, &width_nb, &tmp_w, &tmp_p);
 	ft_display_int_show(*flags, &tmp_w, &tmp_p);
 	if (nb != 0)
 	{
