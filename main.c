@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 #define MEME 178765
-#define INCLUDE "%*.*d", 30, 10, -13
+#define INCLUDE "%*.*d", 40, -10, 420
 int main(void)
 {
 	ft_printf("======================= PRINTF TESTING =======================\n");
 	//char *p = "Bonjour les pu";
-	ft_printf(INCLUDE);
+	ft_printf("|RET : %d", ft_printf(INCLUDE));
 	printf("\n");
 	printf("|RET : %d", printf(INCLUDE));
 	printf("\n");

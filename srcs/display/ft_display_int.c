@@ -17,7 +17,7 @@ int		ft_display_int(int nb, t_flags *f)
 	int	st_len; //Taille des char
 	int	st_total_len; //Taille total
 	int	i;
-	int neg;
+	int	neg;
 	int	zero;
 
 	neg = (nb < 0) ? 1 : 0;
@@ -44,7 +44,7 @@ int		ft_display_int(int nb, t_flags *f)
 		ft_putnbr_fd(nb, 1);
 	if (nb == 0)
 		ft_putchar_fd('0', 1);
-	while (f->tiret && ++i < st_total_len - st_len)
+	while (f->tiret && ++i < (st_total_len - st_len + ((neg == 0) ? 1 : 0)))
 		ft_putchar_fd(' ', 1);
 	return (st_total_len);
 }
