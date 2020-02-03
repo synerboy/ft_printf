@@ -14,12 +14,14 @@
 
 int		ft_display_int(int nb, t_flags *f)
 {
-	int	st_len; //Taille des char
-	int	st_total_len; //Taille total
+	int	st_len;
+	int	st_total_len;
 	int	i;
 	int	neg;
 	int	zero;
+	int total;
 
+	total = (f->width > (((f->point && f->precision < ft_width_nb(nb)))) ? f->width : ((f->point && f->precision < ft_width_nb(nb))));
 	neg = (nb < 0) ? 1 : 0;
 	nb = (neg) ? -nb : nb;
 	zero = 0;
@@ -46,5 +48,5 @@ int		ft_display_int(int nb, t_flags *f)
 		ft_putchar_fd('0', 1);
 	while (f->tiret && ++i < (st_total_len - st_len + ((neg == 0) ? 1 : 0)))
 		ft_putchar_fd(' ', 1);
-	return (st_total_len);
+	return (total);
 }
