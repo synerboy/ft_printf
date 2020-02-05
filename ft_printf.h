@@ -49,7 +49,7 @@ int					ft_width_nb_64(__uint128_t n);
 int					ft_width_nb(int n);
 int					ft_width_nb_unsigned(unsigned int n);
 int					ft_width_nb_long(unsigned long n);
-void				ft_display_c(char c, t_flags *flags);
+int					ft_display_c(char c, t_flags *flags);
 void				ft_display_unsigned_int(unsigned int nb, t_flags *flags);
 char				*ft_unsigned_itoa(unsigned int n);
 void				ft_display_pointer(t_flags *flags, char *pt);

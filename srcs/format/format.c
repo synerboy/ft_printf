@@ -23,11 +23,11 @@ int			ft_format(va_list args, char type, t_flags *flags)
 		flags->width = -flags->width;
 	}
 	if (type == '%')
-		ft_display_c('%', flags);
+		return(ft_display_c('%', flags));
 	if (type == 'd' || type == 'i')
 		return (ft_display_int(va_arg(args, int), flags));
 	if (type == 'c')
-		ft_display_c(va_arg(args, int), flags);
+		return (ft_display_c(va_arg(args, int), flags));
 	if (type == 'u')
 		ft_display_unsigned_int(va_arg(args, unsigned int), flags);
 	if (type == 'p')
