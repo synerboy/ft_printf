@@ -12,19 +12,21 @@
 
 #include "../../ft_printf.h"
 
-void				ft_show_result_null(t_flags *flags)
+int				ft_show_result_null(t_flags *flags)
 {
 	if (flags->point && flags->precision == 0)
 	{
 		flags->point = 0;
 		flags->precision = 0;
 		ft_display_string("0x", flags);
+		return (2);
 	}
 	else
 	{
 		flags->point = 0;
 		flags->precision = 0;
 		ft_display_string("0x0", flags);
+		return (3);
 	}
 }
 
@@ -58,6 +60,6 @@ int					ft_display_pointer(t_flags *f, char *pt)
 		free(forfree);
 	}
 	else
-		ft_show_result_null(f);
+		return (ft_show_result_null(f));
 	return (st_total_len);
 }
