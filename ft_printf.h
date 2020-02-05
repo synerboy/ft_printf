@@ -50,13 +50,13 @@ int					ft_width_nb(int n);
 int					ft_width_nb_unsigned(unsigned int n);
 int					ft_width_nb_long(unsigned long n);
 int					ft_display_c(char c, t_flags *flags);
-void				ft_display_unsigned_int(unsigned int nb, t_flags *flags);
+int					ft_display_unsigned_int(unsigned int nb, t_flags *f);
 char				*ft_unsigned_itoa(unsigned int n);
-void				ft_display_pointer(t_flags *flags, char *pt);
+int					ft_display_pointer(t_flags *flags, char *pt);
 void				ft_putpointer_fd(__uint128_t n, int fd);
 void				ft_putpointer_long_fd(unsigned long n, int fd);
 void				ft_putpointermaj_fd(__uint128_t n, int fd);
 int					ft_display_string(char *c, t_flags *flags);
 void				ft_display_hexamaj(t_flags *flags, char *hex);
-void				ft_display_hexa(t_flags *flags, char *hex);
+int					ft_display_hexa(t_flags *flags, char *hex, int maj);
 #endif

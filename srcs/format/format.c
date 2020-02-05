@@ -29,17 +29,17 @@ int			ft_format(va_list args, char type, t_flags *flags)
 	if (type == 'c')
 		return (ft_display_c(va_arg(args, int), flags));
 	if (type == 'u')
-		ft_display_unsigned_int(va_arg(args, unsigned int), flags);
+		return (ft_display_unsigned_int(va_arg(args, unsigned int), flags));
 	if (type == 'p')
-		ft_display_pointer(flags, va_arg(args, char *));
+		return (ft_display_pointer(flags, va_arg(args, char *)));
 	if (type == 's')
 	{
 		stmp = va_arg(args, char *);
 		return (ft_display_string((stmp == NULL) ? "(null)" : stmp, flags));
 	}
 	if (type == 'x')
-		ft_display_hexa(flags, va_arg(args, char *));
+		return (ft_display_hexa(flags, va_arg(args, char *), 0));
 	if (type == 'X')
-		ft_display_hexamaj(flags, va_arg(args, char *));
+		return (ft_display_hexa(flags, va_arg(args, char *), 1));
 	return (1);
 }

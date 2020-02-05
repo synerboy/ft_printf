@@ -12,55 +12,31 @@
 
 #include "../../ft_printf.h"
 
-void	ft_display_unsigned_int_cfg(t_flags *f, int *width_nb, int *p, int *w)
+int		ft_display_unsigned_int(unsigned int nb, t_flags *f)
 {
-	if (f->width < 0)
-	{
-		f->tiret = 1;
-		f->width = -f->width;
-	}
-	if (f->width > *width_nb && f->precision == 0)
-	{
-		if (f->zero)
-			*p = f->width - *width_nb;
-		if (f->zero == 0)
-			*w = f->width - *width_nb;
-	}
-	if (f->width <= f->precision && f->precision >= *width_nb && !(f->width))
-	{
-		*w = 0;
-		*p = f->precision - *width_nb;
-	}
-	if (f->width >= f->precision && f->precision >= *width_nb)
-	{
-		*w = f->width - (f->precision);
-		*p = f->precision - *width_nb;
-	}
-	if (f->width >= f->precision && f->precision <= *width_nb)
-		if (f->zero == 0)
-			*w = f->width - *width_nb;
-}
+	int len;
+	int	st_len;
+	int	st_total_len;
+	int i;
 
-void	ft_display_unsigned_int(unsigned int nb, t_flags *flags)
-{
-	int width_nb;
-	int tmp_w;
-	int tmp_p;
-
-	tmp_w = 0;
-	tmp_p = 0;
-	flags->unsignedint_tmp = nb;
-	width_nb = ft_width_nb_unsigned(flags->unsignedint_tmp) - 1;
-	ft_display_unsigned_int_cfg(flags, &width_nb, &tmp_p, &tmp_w);
-	if (flags->precision >= flags->width && width_nb > flags->width)
-		tmp_p = flags->precision - width_nb;
-	if (flags->tiret == 0)
-		while (tmp_w-- > 0)
-			ft_putchar_fd(' ', 1);
-	while (tmp_p-- > 0)
-		ft_putchar_fd('0', 2);
+	len = ft_width_nb_unsigned(nb) - 1;
+	if (f->zero && f->width > 0 && f->point)
+		f->zero = 0;
+	f->precision = ((f->precision < 0) ? 0 : f->precision);
+	f->precision = (f->zero && f->width > len) ? f->width - len : f->precision;
+	st_len = (((f->precision > len) ? f->precision : len));
+	st_len += ((nb < 0 && f->precision >= len) ? 1 : 0);
+	st_total_len = ((f->width > st_len) ? f->width : st_len);
+	i = -1;
+	if (f->tiret == 0 && (i = -1))
+		while (++i < st_total_len - st_len)
+			ft_putchar_fd(((f->zero) ? '0' : ' '), 1);
+	i = -1;
+	while (++i < st_len - len)
+		ft_putchar_fd('0', 1);
 	ft_putstr_fd(ft_unsigned_itoa(nb), 1);
-	if (flags->tiret)
-		while (tmp_w-- > 0)
+	if (f->tiret == 1 && (i = -1))
+		while (++i < st_total_len - st_len)
 			ft_putchar_fd(' ', 1);
+	return (st_total_len);
 }

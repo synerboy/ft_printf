@@ -57,3 +57,29 @@ char			*ft_itoa_base(long long n, size_t base)
 		*tmp = '-';
 	return (new);
 }
+
+char			*ft_itoa_base_maj(long long n, size_t base)
+{
+	static char *base_str = "0123456789ABCDEF";
+	char		*new;
+	char		*tmp;
+	int			ctnum;
+
+	if (base > 16)
+		return (NULL);
+	ctnum = (n < 0) ? ft_ctnum(n, base) + 1 : ft_ctnum(n, base);
+	if (!(new = (char *)ft_calloc(ctnum, sizeof(char))))
+		return (NULL);
+	tmp = new + (ctnum - 2);
+	if (!n)
+		*new = '0';
+	while (n)
+	{
+		*tmp = base_str[((n < 0) ? -(n % base) : (n % base))];
+		n /= base;
+		tmp--;
+	}
+	if (tmp == new && *new != '0')
+		*tmp = '-';
+	return (new);
+}

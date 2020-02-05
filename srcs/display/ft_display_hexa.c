@@ -12,67 +12,35 @@
 
 #include "../../ft_printf.h"
 
-void	ft_config_hex(t_flags *flags, int *tmp_p, int *tmp_w, int *width)
+int		ft_display_hexa(t_flags *f, char *hex, int maj)
 {
-	if (flags->width <= flags->precision && flags->precision > *width)
-		*tmp_p = flags->precision - *width;
-	if (flags->width >= flags->precision && flags->precision > *width)
-	{
-		*tmp_w = flags->width - flags->precision - 2;
-		*tmp_p = flags->precision - *width;
-	}
-	if ((flags->width && flags->precision == 0) ||
-	(flags->width >= flags->precision))
-		*tmp_w = flags->width - *width;
-	if (flags->width > flags->precision && flags->width > *width
-	&& flags->precision > *width)
-		*tmp_w = flags->width - flags->precision;
-}
+	int len;
+	int	st_len;
+	int	st_total_len;
+	int i;
+	char *forfree;
+	unsigned long tmp;
 
-void	ft_show_result_hex(t_flags *f, int tmp_w, int tmp_p, __uint128_t read)
-{
-	if (f->tiret == 0 && (f->zero == 0 || f->point) && f->width > 0)
-		while (tmp_w-- >= 0)
+	tmp = (unsigned long)hex;
+	forfree = ((maj == 1) ? (ft_itoa_base_maj((long long)(tmp), 16)) 
+	: (ft_itoa_base((long long)(tmp), 16)));
+	len = ft_strlen(forfree);
+	if (f->zero && f->width > 0 && f->point)
+		f->zero = 0;
+	f->precision = ((f->precision < 0) ? 0 : f->precision);
+	f->precision = (f->zero && f->width > len) ? f->width - len : f->precision;
+	st_len = (((f->precision > len) ? f->precision : len));
+	st_total_len = ((f->width > st_len) ? f->width : st_len);
+	i = -1;
+	if (f->tiret == 0 && (i = -1))
+		while (++i < st_total_len - st_len)
 			ft_putchar_fd(' ', 1);
-	if (f->zero || (f->width > 0 && f->tiret == 0) || f->tiret)
-		while (tmp_p-- > 0)
-			ft_putchar_fd('0', 1);
-	if (f->zero && f->width > 0 && f->tiret == 0 && f->point == 0)
-		while (tmp_w-- > 0)
-			ft_putchar_fd('0', 1);
-	ft_putpointer_fd(read, 2);
-	if (read == 0)
+	i = -1;
+	while (++i < st_len - len)
 		ft_putchar_fd('0', 1);
-	if (f->tiret)
-		while (tmp_w-- > 0)
+	ft_putstr_fd(forfree, 1);
+	if (f->tiret == 1 && (i = -1))
+		while (++i < st_total_len - st_len)
 			ft_putchar_fd(' ', 1);
-}
-
-void	ft_display_hexa(t_flags *flags, char *hex)
-{
-	unsigned long	read;
-	int				width;
-	int				tmp_w;
-	int				tmp_p;
-
-	tmp_w = 0;
-	tmp_p = 0;
-	read = (unsigned long)hex;
-	width = ft_width_nb_64(read);
-	if (flags->width < 0)
-	{
-		flags->tiret = 1;
-		flags->width = -flags->width;
-	}
-	if (read || read == 0)
-	{
-		ft_config_hex(flags, &tmp_p, &tmp_w, &width);
-		ft_show_result_hex(flags, tmp_w, tmp_p, read);
-	}
-	else
-	{
-		flags->point = 0;
-		flags->precision = 0;
-		ft_display_string("(null)", flags);
-	}
+	return (st_total_len);
 }

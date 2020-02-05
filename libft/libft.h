@@ -56,6 +56,7 @@ int				ft_ischar(char c, char const *charset);
 char			**ft_split(char const *s, char c);
 char			*ft_itoa(long long n);
 char			*ft_itoa_base(long long n, size_t base);
+char			*ft_itoa_base_maj(long long n, size_t base);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
