@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 #define MEME 178765
-#define INCLUDE "%.p", NULL
+#define INCLUDE "%.0x9f4iH%6c%4crEw%ifcAjzIK", 0, '\0', '\0', 2147483647
 int main(void)
 {
 	//char *p = "test";
