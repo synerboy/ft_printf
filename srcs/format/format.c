@@ -23,23 +23,23 @@ int			ft_format(va_list args, char type, t_flags *flags)
 		flags->width = -flags->width;
 	}
 	if (type == '%')
-		return(ft_display_c('%', flags));
-	if (type == 'd' || type == 'i')
+		return (ft_display_c('%', flags));
+	else if (type == 'd' || type == 'i')
 		return (ft_display_int(va_arg(args, int), flags));
-	if (type == 'c')
+	else if (type == 'c')
 		return (ft_display_c(va_arg(args, int), flags));
-	if (type == 'u')
+	else if (type == 'u')
 		return (ft_display_unsigned_int(va_arg(args, unsigned int), flags));
-	if (type == 'p')
+	else if (type == 'p')
 		return (ft_display_pointer(flags, va_arg(args, char *)));
-	if (type == 's')
+	else if (type == 's')
 	{
 		stmp = va_arg(args, char *);
 		return (ft_display_string((stmp == NULL) ? "(null)" : stmp, flags));
 	}
-	if (type == 'x')
+	else if (type == 'x')
 		return (ft_display_hexa(flags, va_arg(args, char *), 0));
-	if (type == 'X')
+	else if (type == 'X')
 		return (ft_display_hexa(flags, va_arg(args, char *), 1));
 	return (1);
 }
