@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:03 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/06 18:49:16 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/06 19:11:17 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ void			ft_display_pt_show(t_flags *f, int *tt, int *len, char *st)
 
 	i = -1;
 	if (f->tiret == 0)
-		while (++i < (tt - len - 2))
+		while (++i < (*tt - *len - 2))
 			ft_putchar_fd(' ', 1);
 	ft_putstr_fd("0x", 1);
 	ft_putstr_fd(st, 1);
+	i = -1;
 	if (f->tiret == 1)
-		while (++i < (tt - len - 2))
+		while (++i < (*tt - *len - 2))
 			ft_putchar_fd(' ', 1);
 }
 
@@ -56,17 +57,14 @@ int				ft_display_pointer(t_flags *f, char *pt)
 	len = 0;
 	tmp = (unsigned long)pt;
 	st_total_len = 0;
+	forfree = ft_itoa_base((long long)(tmp), 16);
 	len = ft_strlen(forfree);
 	st_len = len + 2;
 	st_total_len = ((f->width > st_len) ? f->width : st_len);
 	if (pt)
-	{
-		forfree = ft_itoa_base((long long)(tmp), 16);
-		st_total_len += ft_strlen(forfree);
 		ft_display_pt_show(f, &st_total_len, &len, forfree);
-		free(forfree);
-	}
-	else
+	free(forfree);
+	if (pt == NULL)
 	{
 		f->tmp = ft_show_result_null(f);
 		return ((f->width > f->tmp) ? st_total_len : f->tmp);
