@@ -6,45 +6,52 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:10:55 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/02 15:03:04 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/06 16:25:03 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-int		ft_display_hexa(t_flags *f, char *hex, int maj)
+void				ft_display_hexa_show(t_flags *f, int *len, char *forfree)
 {
-	int len;
-	int	st_len;
-	int	st_total_len;
 	int i;
-	char *forfree;
-	unsigned long tmp;
 
-	tmp = (unsigned long)hex;
-	forfree = ((maj == 1) ? (ft_itoa_base_maj((long long)(tmp), 16)) 
-	: (ft_itoa_base((long long)(tmp), 16)));
-	len = ft_strlen(forfree);
-	len = (len == 1 && forfree[0] == '0') ? 1 : ft_strlen(forfree);
-	len = (len == 1 && forfree[0] == '0' && f->precision == 0 && f->point) ? 0 : len;
-	if (len == 0 && forfree[0] == '0')
-		forfree[0] = '\0';
-	if (f->zero && f->width > 0 && f->point)
-		f->zero = 0;
+	i = -1;
+	if (f->tiret == 0 && (i = -1))
+		while (++i < f->tmp2 - f->tmp)
+			ft_putchar_fd(' ', 1);
+	i = -1;
+	while (++i < f->tmp - *len)
+		ft_putchar_fd('0', 1);
+	ft_putstr_fd(forfree, 1);
+	if (f->tiret == 1 && (i = -1))
+		while (++i < f->tmp2 - f->tmp)
+			ft_putchar_fd(' ', 1);
+}
+
+int					ft_display_hexa(t_flags *f, char *hex, int maj)
+{
+	int				len;
+	int				st_len;
+	int				st_total_len;
+	char			*st;
+	u_int32_t		tmp;
+
+	tmp = (u_int32_t)hex;
+	st = ((maj == 1) ? (ft_itoa_base_maj((u_int32_t)(tmp), 16))
+	: (ft_itoa_base((u_int32_t)(tmp), 16)));
+	len = ft_strlen(st);
+	len = (len == 1 && st[0] == '0') ? 1 : ft_strlen(st);
+	len = (len == 1 && st[0] == '0' && f->precision == 0 && f->point) ? 0 : len;
+	st[0] = (len == 0 && st[0] == '0') ? '\0' : st[0];
+	f->zero = (f->zero && f->width > 0 && f->point) ? 0 : f->zero;
 	f->precision = ((f->precision < 0) ? 0 : f->precision);
 	f->precision = (f->zero && f->width > len) ? f->width - len : f->precision;
 	st_len = (((f->precision > len) ? f->precision : len));
 	st_total_len = ((f->width > st_len) ? f->width : st_len);
-	i = -1;
-	if (f->tiret == 0 && (i = -1))
-		while (++i < st_total_len - st_len)
-			ft_putchar_fd(' ', 1);
-	i = -1;
-	while (++i < st_len - len)
-		ft_putchar_fd('0', 1);
-	ft_putstr_fd(forfree, 1);
-	if (f->tiret == 1 && (i = -1))
-		while (++i < st_total_len - st_len)
-			ft_putchar_fd(' ', 1);
+	f->tmp = st_len;
+	f->tmp2 = st_total_len;
+	ft_display_hexa_show(f, &len, st);
+	printf("((%s))", st);
 	return (st_total_len);
 }

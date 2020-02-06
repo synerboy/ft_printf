@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:06 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/01/31 15:56:24 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/06 14:05:21 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_display_string(char *c, t_flags *f)
 	int	i;
 
 	i = -1;
-	st_len = ((f->point && f->precision < (int)ft_strlen(c)) 
+	st_len = ((f->point && f->precision < (int)ft_strlen(c))
 	&& (f->precision >= 0)) ? f->precision : ft_strlen(c);
 	st_total_len = (f->width > st_len) ? f->width : st_len;
 	while (f->tiret == 0 && ++i < st_total_len - st_len)

@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:03 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/02 16:40:33 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/06 16:27:39 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,33 +30,39 @@ int				ft_show_result_null(t_flags *flags)
 	}
 }
 
-int					ft_display_pointer(t_flags *f, char *pt)
+void			ft_display_pt_show(t_flags *f, int *tt, int *len, char *st)
 {
-	unsigned long	tmp;
-	int				len;
-	char			*forfree;
-	int				st_len;
-	int				st_total_len;
-	int				i;
+	int 		i;
+
+	i = -1;
+	if (f->tiret == 0)
+		while (++i < (tt - len - 2))
+			ft_putchar_fd(' ', 1);
+	ft_putstr_fd("0x", 1);
+	ft_putstr_fd(st, 1);
+	if (f->tiret == 1)
+		while (++i < (tt - len - 2))
+			ft_putchar_fd(' ', 1);
+}
+
+int				ft_display_pointer(t_flags *f, char *pt)
+{
+	u_int32_t	tmp;
+	int			len;
+	char		*forfree;
+	int			st_len;
+	int			st_total_len;
 
 	len = 0;
-	tmp = (unsigned long)pt;
+	tmp = (u_int32_t)pt;
 	st_total_len = 0;
 	if (pt)
 	{
-		forfree = ft_itoa_base((long long)(tmp), 16);
+		forfree = ft_itoa_base((u_int32_t)(tmp), 16);
 		len = ft_strlen(forfree);
-		st_len = len + 2;	
-		i = -1;
+		st_len = len + 2;
 		st_total_len = ((f->width > st_len) ? f->width : st_len);
-		if (f->tiret == 0)
-			while (++i < (st_total_len - len - 2))
-				ft_putchar_fd(' ', 1);
-		ft_putstr_fd("0x", 1);
-		ft_putstr_fd(forfree, 1);
-		if (f->tiret == 1)
-			while (++i < (st_total_len - len - 2))
-				ft_putchar_fd(' ', 1);
+		ft_display_pt_show(f, &st_total_len, &len, forfree);
 		free(forfree);
 	}
 	else

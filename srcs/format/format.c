@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:14 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/01/31 16:09:38 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/06 14:54:40 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@ int			ft_format(va_list args, char type, t_flags *flags)
 	}
 	if (type == '%')
 		return (ft_display_c('%', flags));
-	else if (type == 'd' || type == 'i')
+	if (type == 'd' || type == 'i')
 		return (ft_display_int(va_arg(args, int), flags));
-	else if (type == 'c')
+	if (type == 'c')
 		return (ft_display_c(va_arg(args, int), flags));
-	else if (type == 'u')
+	if (type == 'u')
 		return (ft_display_unsigned_int(va_arg(args, unsigned int), flags));
-	else if (type == 'p')
+	if (type == 'p')
 		return (ft_display_pointer(flags, va_arg(args, char *)));
-	else if (type == 's')
+	if (type == 's')
 	{
 		stmp = va_arg(args, char *);
 		return (ft_display_string((stmp == NULL) ? "(null)" : stmp, flags));
 	}
-	else if (type == 'x')
+	if (type == 'x')
 		return (ft_display_hexa(flags, va_arg(args, char *), 0));
-	else if (type == 'X')
+	if (type == 'X')
 		return (ft_display_hexa(flags, va_arg(args, char *), 1));
 	return (1);
 }

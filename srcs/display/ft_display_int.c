@@ -6,11 +6,27 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:01 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/02 15:01:25 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/06 14:05:49 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
+
+void	ft_display_int_cfg(t_flags *f, int *len, int *st_len, int *st_ttlen)
+{
+	int nb;
+
+	nb = f->tmp;
+	*len = ft_width_nb((nb < 0) ? -nb : nb) + ((nb < 0) ? 1 : 0);
+	if (f->zero && f->width > 0 && f->point)
+		f->zero = 0;
+	f->precision = ((f->precision < 0) ? 0 : f->precision);
+	f->precision = (f->zero && f->width > *len) ?
+	f->width - *len : f->precision;
+	*st_len = (((f->precision > *len) ? f->precision : *len));
+	*st_len += ((nb < 0 && f->precision >= *len) ? 1 : 0);
+	*st_ttlen = ((f->width > *st_len) ? f->width : *st_len);
+}
 
 int		ft_display_int(int nb, t_flags *f)
 {
@@ -19,14 +35,8 @@ int		ft_display_int(int nb, t_flags *f)
 	int	st_total_len;
 	int i;
 
-	len = ft_width_nb((nb < 0) ? -nb : nb) + ((nb < 0) ? 1 : 0);
-	if (f->zero && f->width > 0 && f->point)
-		f->zero = 0;
-	f->precision = ((f->precision < 0) ? 0 : f->precision);
-	f->precision = (f->zero && f->width > len) ? f->width - len : f->precision;
-	st_len = (((f->precision > len) ? f->precision : len));
-	st_len += ((nb < 0 && f->precision >= len) ? 1 : 0);
-	st_total_len = ((f->width > st_len) ? f->width : st_len);
+	f->tmp = nb;
+	ft_display_int_cfg(f, &len, &st_len, &st_total_len);
 	i = -1;
 	if (nb < 0 && f->zero == 1)
 		ft_putchar_fd('-', 1);
@@ -35,7 +45,6 @@ int		ft_display_int(int nb, t_flags *f)
 			ft_putchar_fd(((f->zero) ? '0' : ' '), 1);
 	if (nb < 0 && f->zero == 0 && (i = -1))
 		ft_putchar_fd('-', 1);
-	i = -1;
 	while (++i < st_len - len)
 		ft_putchar_fd('0', 1);
 	if ((f->point && f->precision == 0) && nb == 0)
