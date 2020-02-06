@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:03 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/06 16:27:39 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/06 16:29:32 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				ft_show_result_null(t_flags *flags)
 
 void			ft_display_pt_show(t_flags *f, int *tt, int *len, char *st)
 {
-	int 		i;
+	int	i;
 
 	i = -1;
 	if (f->tiret == 0)
