@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:10:55 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/06 16:25:03 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/06 18:17:52 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void				ft_display_hexa_show(t_flags *f, int *len, char *forfree)
 	i = -1;
 	if (f->tiret == 0 && (i = -1))
 		while (++i < f->tmp2 - f->tmp)
-			ft_putchar_fd(' ', 1);
+			ft_putchar_fd((f->zero) ? '0' : ' ', 1);
 	i = -1;
 	while (++i < f->tmp - *len)
 		ft_putchar_fd('0', 1);
@@ -52,6 +52,5 @@ int					ft_display_hexa(t_flags *f, char *hex, int maj)
 	f->tmp = st_len;
 	f->tmp2 = st_total_len;
 	ft_display_hexa_show(f, &len, st);
-	printf("((%s))", st);
 	return (st_total_len);
 }
