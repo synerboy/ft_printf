@@ -25,7 +25,8 @@ int		ft_display_hexa(t_flags *f, char *hex, int maj)
 	forfree = ((maj == 1) ? (ft_itoa_base_maj((long long)(tmp), 16)) 
 	: (ft_itoa_base((long long)(tmp), 16)));
 	len = ft_strlen(forfree);
-	len = (len == 1 && forfree[0] == '0') ? 0 : 1;
+	len = (len == 1 && forfree[0] == '0') ? 1 : ft_strlen(forfree);
+	len = (len == 1 && forfree[0] == '0' && f->precision == 0 && f->point) ? 0 : len;
 	if (len == 0 && forfree[0] == '0')
 		forfree[0] = '\0';
 	if (f->zero && f->width > 0 && f->point)

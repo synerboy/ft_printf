@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 #define MEME 178765
-#define INCLUDE "%.0x9f4iH%6c%4crEw%ifcAjzIK", 0, '\0', '\0', 2147483647
+#define INCLUDE "%u%-x%*c%.*x63Gy%.2u%*cG58XT%-sQVo", -1413624116, -2147483647, -7, '\0', 3, 0, 0, -4, 'd', "PTp4aTjaX7AJORNvjBudyPC3CADw0qyvXCoxRR3x6fhzbUb"
 int main(void)
 {
 	//char *p = "test";

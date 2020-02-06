@@ -38,7 +38,10 @@ int		ft_display_int(int nb, t_flags *f)
 	i = -1;
 	while (++i < st_len - len)
 		ft_putchar_fd('0', 1);
-	ft_putnbr_fd(((nb < 0) ? -nb : nb), 1);
+	if ((f->point && f->precision == 0) && nb == 0)
+		ft_putchar_fd(' ', 1);
+	else
+		ft_putnbr_fd(((nb < 0) ? -nb : nb), 1);
 	if (f->tiret == 1 && (i = -1))
 		while (++i < st_total_len - st_len)
 			ft_putchar_fd(' ', 1);
