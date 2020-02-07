@@ -6,22 +6,27 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:14 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/06 16:56:18 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/07 11:43:42 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
+
+void		ft_format_cfg(t_flags *flags)
+{
+	if (flags->width < 0)
+	{
+		flags->tiret = 1;
+		flags->width = -flags->width;
+	}
+}
 
 int			ft_format(va_list args, char type, t_flags *flags)
 {
 	char	*stmp;
 
 	(void)args;
-	if (flags->width < 0)
-	{
-		flags->tiret = 1;
-		flags->width = -flags->width;
-	}
+	ft_format_cfg(flags);
 	if (type == '%')
 		return (ft_display_percent('%', flags));
 	if (type == 'd' || type == 'i')

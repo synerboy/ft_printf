@@ -6,13 +6,13 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 16:16:59 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/01/31 19:08:16 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/07 11:30:01 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ft_printf.h"
 
-int		ft_parsing_engine(t_flags *flags, char *c, int o, va_list args)
+int			ft_parsing_engine(t_flags *flags, char *c, int o, va_list args)
 {
 	int u;
 
@@ -40,7 +40,7 @@ int		ft_parsing_engine(t_flags *flags, char *c, int o, va_list args)
 	return (u);
 }
 
-int		ft_parsing_engine2(t_flags *flags, char *c, int o, va_list args)
+int			ft_parsing_engine2(t_flags *flags, char *c, int o, va_list args)
 {
 	int u;
 

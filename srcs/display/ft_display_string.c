@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:06 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/06 14:05:21 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/07 10:12:05 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_display_string(char *c, t_flags *f)
 	&& (f->precision >= 0)) ? f->precision : ft_strlen(c);
 	st_total_len = (f->width > st_len) ? f->width : st_len;
 	while (f->tiret == 0 && ++i < st_total_len - st_len)
-		ft_putchar_fd(' ', 1);
+		ft_putchar_fd((f->zero) ? '0' : ' ', 1);
 	ft_putstr_len_fd(c, st_len, 1);
 	while (f->tiret && ++i < st_total_len - st_len)
 		ft_putchar_fd(' ', 1);

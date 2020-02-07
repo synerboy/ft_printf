@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 CC = gcc
-CFLAGS =  -Wall -Wextra -Werror
+CFLAGS =  -Wall -Wextra
 
 SRCS = 	libft/ft_bzero.c \
 		libft/ft_memcpy.c \
