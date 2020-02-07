@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:01 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/07 11:38:32 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/07 11:54:19 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int		ft_display_int(int nb, t_flags *f)
 	int len;
 	int	st_len;
 	int	st_total_len;
-	int i;
 
 	f->tmp = nb;
 	ft_display_int_cfg(f, &len, &st_len, &st_total_len);

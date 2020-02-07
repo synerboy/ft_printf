@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:11 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/07 11:30:22 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/07 11:54:27 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int		ft_display_unsigned_int(unsigned int nb, t_flags *f)
 	int len;
 	int	st_len;
 	int	st_total_len;
-	int i;
 
 	f->unsignedint_tmp = nb;
 	len = ft_width_nb_unsigned(nb) - 1;
