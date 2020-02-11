@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:10:55 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/11 12:39:30 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/11 16:41:05 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ int					ft_display_hexa(t_flags *f, char *hex, int maj)
 	f->tmp = st_len;
 	f->tmp2 = st_total_len;
 	ft_display_hexa_show(f, &len, st);
+	free(st);
 	return (st_total_len);
 }

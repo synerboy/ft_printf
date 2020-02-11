@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/02/11 13:06:13 by vabrageo          #+#    #+#              #
+#    Updated: 2020/02/11 13:06:15 by vabrageo         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -61,7 +73,6 @@ $(NAME): ${OBJS}
 	${AR} ${NAME} ${OBJS}
 clean:
 	rm -rf $(OBJS)
-	rm $(NAME)
 
 fclean: clean
 	rm -rf $(NAME)
