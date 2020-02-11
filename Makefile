@@ -61,9 +61,6 @@ all: $(NAME)
 
 $(NAME): ${OBJS}
 	${AR} ${NAME} ${OBJS}
-test: all
-	$(CC) $(CFLAGS) main.c libftprintf.a -o X
-	./X
 clean:
 	rm -rf $(OBJS)
 	rm $(NAME)
