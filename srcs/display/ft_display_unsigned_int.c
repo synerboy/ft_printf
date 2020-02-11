@@ -23,7 +23,7 @@ void	ft_display_unsigned_int_show(t_flags *f, int *tt, int *stlen, int *len)
 	i = -1;
 	while (++i < *stlen - *len)
 		ft_putchar_fd('0', 1);
-	if ((f->point && f->precision == 0) && f->unsignedint_tmp == 0)
+	if ((f->point && f->precision == 0) && f->unsignedint_tmp == 0 && *len == 0)
 		;
 	else
 		ft_putstr_fd(ft_unsigned_itoa(f->unsignedint_tmp), 1);
@@ -41,8 +41,8 @@ int		ft_display_unsigned_int(unsigned int nb, t_flags *f)
 
 	f->unsignedint_tmp = nb;
 	len = ft_width_nb_unsigned(nb) - 1;
-	len -= ((len == 1 && f->precision == 0 && f->point == 1) ? 1 : 0);
-	if (f->zero && f->width > 0 && f->point)
+	len -= ((len == 1 && nb == 0 && f->precision == 0 && f->point == 1) ? 1 : 0);
+	if (f->zero && f->width > 0 && f->point && f->precision >= 0)
 		f->zero = 0;
 	f->precision = ((f->precision < 0) ? 0 : f->precision);
 	f->precision = (f->zero && f->width > len) ? f->width - len : f->precision;

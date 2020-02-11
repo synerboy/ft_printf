@@ -44,7 +44,7 @@ int					ft_display_hexa(t_flags *f, char *hex, int maj)
 	len = (len == 1 && st[0] == '0') ? 1 : ft_strlen(st);
 	len = (len == 1 && st[0] == '0' && f->precision == 0 && f->point) ? 0 : len;
 	st[0] = (len == 0 && st[0] == '0') ? '\0' : st[0];
-	f->zero = (f->zero && f->width > 0 && f->point) ? 0 : f->zero;
+	f->zero = (f->zero && f->width > 0 && f->point  && f->precision >= 0) ? 0 : f->zero;
 	f->precision = ((f->precision < 0) ? 0 : f->precision);
 	f->precision = (f->zero && f->width > len) ? f->width - len : f->precision;
 	st_len = (((f->precision > len) ? f->precision : len));

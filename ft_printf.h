@@ -34,6 +34,7 @@ typedef struct		s_flags
 	int				width;
 	int				tmp;
 	int				tmp2;
+	int				tmp3;
 	unsigned int	unsignedint_tmp;
 
 }					t_flags;

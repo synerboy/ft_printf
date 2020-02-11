@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 CC = gcc
-CFLAGS =  -Wall -Wextra -Werror
+CFLAGS = 
 
 SRCS = 	libft/ft_bzero.c \
 		libft/ft_memcpy.c \
@@ -61,7 +61,9 @@ all: $(NAME)
 
 $(NAME): ${OBJS}
 	${AR} ${NAME} ${OBJS}
-
+test: all
+	$(CC) $(CFLAGS) main.c libftprintf.a -o X
+	./X
 clean:
 	rm -rf $(OBJS)
 	rm $(NAME)
