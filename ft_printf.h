@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:48:12 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/06 16:41:54 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:49:14 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void				ft_putpointer_fd(__uint128_t n, int fd);
 void				ft_putpointer_long_fd(unsigned long n, int fd);
 void				ft_putpointermaj_fd(__uint128_t n, int fd);
 int					ft_display_string(char *c, t_flags *flags);
-void				ft_display_hexamaj(t_flags *flags, char *hex);
 int					ft_display_hexa(t_flags *flags, char *hex, int maj);
 int					ft_display_percent(char c, t_flags *f);
 #endif
