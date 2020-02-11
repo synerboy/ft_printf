@@ -56,7 +56,6 @@ SRCS = 	libft/ft_bzero.c \
 OBJS  = ${SRCS:.c=.o}
 AR = ar rc
 all: $(NAME)
-	echo $(SRCS)
 
 $(NAME): ${OBJS}
 	${AR} ${NAME} ${OBJS}
