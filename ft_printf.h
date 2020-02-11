@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 18:48:12 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/11 10:49:14 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/11 11:40:52 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct		s_flags
 	int				tmp2;
 	int				tmp3;
 	unsigned int	unsignedint_tmp;
+	short			widthneg;
 
 }					t_flags;
 

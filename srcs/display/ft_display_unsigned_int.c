@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:11 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/11 10:46:13 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/11 12:34:49 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@ void	ft_display_unsigned_int_show(t_flags *f, int *tt, int *stlen, int *len)
 		while (++i < *tt - *stlen)
 			ft_putchar_fd(((f->zero) ? '0' : ' '), 1);
 	i = -1;
-	while (++i < *stlen - *len)
-		ft_putchar_fd('0', 1);
+	if (!(f->unsignedint_tmp == 0 && f->zero && f->tiret == 1))
+		while (++i < *stlen - *len)
+			ft_putchar_fd('0', 1);
 	if ((f->point && f->precision == 0) && f->unsignedint_tmp == 0 && *len == 0)
 		;
 	else
 		ft_putstr_fd(ft_unsigned_itoa(f->unsignedint_tmp), 1);
+	i = -1;
+	if ((f->unsignedint_tmp == 0 && f->zero && f->tiret == 1))
+		while (++i < *stlen - *len)
+			ft_putchar_fd(' ', 1);
 	i = -1;
 	if (f->tiret == 1)
 		while (++i < *tt - *stlen)

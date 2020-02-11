@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:11:14 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/07 11:43:42 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/11 11:41:18 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void		ft_format_cfg(t_flags *flags)
 	{
 		flags->tiret = 1;
 		flags->width = -flags->width;
+		flags->widthneg = 1;
 	}
 }
 

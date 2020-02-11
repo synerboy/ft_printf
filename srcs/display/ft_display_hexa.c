@@ -6,7 +6,7 @@
 /*   By: vabrageo <vabrageo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:10:55 by vabrageo          #+#    #+#             */
-/*   Updated: 2020/02/11 10:45:52 by vabrageo         ###   ########.fr       */
+/*   Updated: 2020/02/11 12:39:30 by vabrageo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@ void				ft_display_hexa_show(t_flags *f, int *len, char *forfree)
 		while (++i < f->tmp2 - f->tmp)
 			ft_putchar_fd((f->zero) ? '0' : ' ', 1);
 	i = -1;
-	while (++i < f->tmp - *len)
-		ft_putchar_fd('0', 1);
+	if (!(f->zero && f->tiret == 1 && f->tmp3 == 0))
+		while (++i < f->tmp - *len)
+			ft_putchar_fd('0', 1);
 	ft_putstr_fd(forfree, 1);
+	if ((f->zero && f->tiret == 1 && f->tmp3 == 0))
+		while (++i < f->tmp - *len)
+			ft_putchar_fd(' ', 1);
 	if (f->tiret == 1 && (i = -1))
 		while (++i < f->tmp2 - f->tmp)
 			ft_putchar_fd(' ', 1);
@@ -38,6 +42,7 @@ int					ft_display_hexa(t_flags *f, char *hex, int maj)
 	u_int32_t		tmp;
 
 	tmp = (u_int32_t)hex;
+	f->tmp3 = tmp;
 	st = ((maj == 1) ? (ft_itoa_base_maj((u_int32_t)(tmp), 16))
 	: (ft_itoa_base((u_int32_t)(tmp), 16)));
 	len = ft_strlen(st);
